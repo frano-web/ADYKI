@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="logo2.png" type="image/x-icon">
+    <title>ADYKI WHEEL - Manufaktura Kół Karbonowych</title>
+
+    <!-- Style CSS bezpośrednio w HTML -->
+    <style>
+        /* Ogólne style */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Nagłówek i menu */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1% 5%;
+            z-index: 1000;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            height: 8vh;
+            margin-right: 5%;
+        }
+
+        .brand-name {
+            font-size: 2vh;
+            font-weight: bold;
+        }
+
+        .menu-toggle {
+            font-size: 2.5vh;
+            cursor: pointer;
+            display: none;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin: 0 2%;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 2vh;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            nav ul {
+                display: none;
+                flex-direction: column;
+                background: rgba(0, 0, 0, 0.9);
+                position: absolute;
+                top: 6%;
+                left: 0;
+                right: 0;
+                padding: 2%;
+            }
+
+            nav ul li {
+                margin: 2% 0;
+                text-align: center;
+            }
+
+            nav.active ul {
+                display: flex;
+            }
+        }
+
+        /* Tło strony */
+        .background-image {
+            background: url('kola zdj2.jpg') no-repeat center center/cover;
+            height: 160vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Treść na środku */
+        .center-content {
+            text-align: center;
+            color: white;
+        }
+
+        .center-logo {
+            height: 30vh;
+        }
+
+        .center-workshop-image {
+            max-width: 60%;
+            height: auto;
+            margin-top: 5%;
+            border: 2px solid white;
+            border-radius: 10px;
+        }
+
+        /* Sekcja Oferta */
+        #offer {
+            padding: 5% 10%;
+            background-color: #f9f9f9;
+            text-align: center;
+        }
+
+        .grid {
+            display: flex;
+            justify-content: center;
+            gap: 5%;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background: white;
+            padding: 5%;
+            border-radius: 10px;
+            box-shadow: 0 2% 5% rgba(0, 0, 0, 0.2);
+            width: 30%;
+            min-width: 280px;
+            margin-top: 1%;
+        }
+        
+        .card:hover {
+            transform: scale(1.1);
+            transition: ease-in-out 200ms;
+        }
+
+        .card img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .card h3 {
+            margin-top: 5%;
+            font-size: 2.2vh;
+        }
+
+        .card ul {
+            padding: 0;
+            list-style: none;
+            text-align: left;
+        }
+
+        .card ul li {
+            margin-bottom: 1%;
+            font-size: 1.8vh;
+        }
+
+        /* Sekcja O Nas */
+        #about {
+            padding: 5% 10%;
+            background-color: #fff;
+            text-align: center;
+        }
+
+        #about p {
+            font-size: 2vh;
+        }
+
+        /* Sekcja Ambasadorzy */
+        #ambassadors {
+            padding: 5% 10%;
+            background-color: #f9f9f9;
+            text-align: center;
+        }
+
+        .ambassador, .patent {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 2%;
+            margin-bottom: 5%;
+            border: 2px solid #ddd;
+            padding: 2%;
+            border-radius: 10px;
+            background-color: white;
+            box-shadow: 0 2% 5% rgba(0, 0, 0, 0.1);
+        }
+
+        .ambassador img, .patent img {
+            max-width: 20%;
+            min-width: 100px;
+            height: auto;
+        }
+
+        .ambassador-content {
+            max-width: 75%;
+            text-align: left;
+        }
+
+        .ambassador h3, .patent h3 {
+            margin: 0 0 1%;
+            font-size: 2vh;
+        }
+
+        .ambassador p, .patent p {
+            font-size: 1.8vh;
+            margin: 0;
+        }
+
+        /* Sekcja piasty */
+        .patent {
+            display: block;
+        }
+
+        .patent-content {
+            text-align: center;
+        }
+
+        img[src="piasta1.jpg"] {
+            margin-right: 10%;
+        }
+
+        img[src="piasta2.jpg"] {
+            margin-left: 10%;
+        }
+
+        /* Sekcja Kontakt */
+        #contact {
+            padding: 5% 10%;
+            background-color: #f9f9f9;
+            text-align: center;
+        }
+
+        #contact p {
+            font-size: 2vh;
+        }
+
+        /* Responsywny tekst */
+        h2 {
+            font-size: 3vh;
+            margin-bottom: 2%;
+        }
+
+        /* Przycisk do rozwijania menu */
+        .menu-toggle {
+            color: white;
+            border: none;
+            background: none;
+        }
+
+        /* Stopka */
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 2%;
+            margin-top: 2%;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 2% 4%;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 3%;
+            margin-top: 2%;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .back-link {
+            color: #4CAF50;
+            text-decoration: none;
+            font-size: 3%;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .info-button {
+            display: block;
+            text-align: center;
+            margin: 5% 0;
+            font-size: 2vh;
+            text-decoration: none;
+            color: white;
+            background-color: #333;
+            padding: 1% 3%;
+            border-radius: 5px;
+        }
+
+        .info-button:hover {
+            transform: scale(1.1);
+            transition: ease-in-out 200ms;
+        }
+
+        /* Globalne ustawienia */
+        .container {
+            width: 100%;
+            margin: 0 auto;
+            padding: 2%;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 5%;
+            margin-bottom: 2%;
+        }
+
+        /* Galeria z użyciem flex */
+        .gallery {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .product-card {
+            width: 32%;
+            background-color: #fff;
+            box-shadow: 0 0 1% rgba(0, 0, 0, 0.1);
+            margin-bottom: 2%;
+            padding: 2%;
+            text-align: center;
+        }
+
+        .product-card img {
+            width: 100%;
+            height: auto;
+        }
+
+        /* Responsywność - dla ekranów mniejszych niż 768px */
+        @media (max-width: 768px) {
+            .gallery {
+                flex-direction: column;
+            }
+
+            .product-card {
+                width: 100%;
+                margin-top: 2%;
+            }
+
+            #gallery table {
+                width: 100%;
+                margin-bottom: 2%;
+            }
+
+            #gallery td {
+                width: 100%;
+                padding: 2%;
+            }
+        }
+		
+		 /* Styl przycisku kontaktowego */
+    .contact-button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        font-size: 2vh;
+        border: none;
+        border-radius: 5px;
+        text-decoration: none;
+        display: inline-block;
+        transition: background-color 0.3s, transform 0.3s;
+    }
+
+    .contact-button:hover {
+        background-color: #45a049;
+        transform: scale(1.1);
+    }
+		
+    </style>
+</head>
+
+
+
+
+
+
+
+<body>
+    <!-- Stały górny margines -->
+    <header>
+        <div class="logo-container">
+            <img src="logo2.png" alt="Logotyp ADYKI WHEEL" class="logo">
+            <span class="brand-name">ADYKI WHEEL</span>
+            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+        </div>
+        <nav id="menu">
+            <ul>
+                <li><a href="#home">Strona Główna</a></li>
+                <li><a href="#offer">Oferta</a></li>
+                <li><a href="#gallery">Galeria</a></li>
+                <li><a href="#about">O Nas</a></li>
+                <li><a href="#contact">Kontakt</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Tło strony -->
+    <div class="background-image" id="home">
+        <div class="center-content">
+            <img src="logo1.png" alt="Logotyp ADYKI WHEEL" class="center-logo">
+            <p>
+                <img src="warsztat1.jpg" alt="Zdjęcie warsztatu" class="center-workshop-image">
+            </p>
+        </div>
+    </div>
+
+    <!-- Sekcja Oferta -->
+    <section id="offer">
+        <h2>Oferta Kół Karbonowych</h2>
+        <div class="grid">
+            <div class="card">
+               
+                <h3>ADYKI WERSJA PODSTAWOWA</h3>
+                <ul>
+                    <li>Waga: 1500g</li>
+                    <li>Materiał: Karbon</li>
+                    <li>Linia Produktu: Podstawowa</li>
+                    <li>Cena: 2500 PLN</li>
+                    <li>Rozmiar Osi: 12x100 12x142</li>
+                    <li>Dostępne Wysokości: 30mm, 40mm, 50mm</li>
+                    <li>Dostępność: Na zamówienie</li>
+                </ul>
+                <a href="wiecejinformacji1.html" class="info-button">Więcej informacji</a>
+            </div>
+            <div class="card">
+                
+                <h3>ADYKI SUPER LIGHT</h3>
+                <ul>
+                    <li>Waga: 1300g</li>
+                    <li>Materiał: Karbon</li>
+                    <li>Linia Produktu: SL</li>
+                    <li>Cena: 2800 PLN</li>
+                    <li>Rozmiar Osi: 12x100 12x142</li>
+                    <li>Dostępne Wysokości: 30mm, 40mm, 50mm</li>
+                    <li>Dostępność: Na zamówienie</li>
+                </ul>
+                <a href="wiecejinformacji2.html" class="info-button">Więcej informacji</a>
+            </div>
+            <div class="card">
+                
+                <h3>ADYKI SUPER LIGHT PRO</h3>
+                <ul>
+                    <li>Waga: 1200g</li>
+                    <li>Materiał: Karbon</li>
+                    <li>Linia Produktu: SL PRO</li>
+                    <li>Cena: 3000 PLN</li>
+                    <li>Rozmiar Osi: 12x100 12x142</li>
+                    <li>Dostępne Wysokości: 30mm, 40mm, 50mm</li>
+                    <li>Dostępność: Na zamówienie</li>
+                </ul>
+                <a href="wiecejinformacji3.html" class="info-button">Więcej informacji</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sekcja O Nas -->
+    <section id="about">
+        <h2>O Nas</h2>
+        <p>Jesteśmy firmą zajmującą się produkcją kół karbonowych dedykowanych do rowerów, w tym kół szosowych, górskich oraz triathlonowych. Nasze produkty charakteryzują się lekkością, wytrzymałością i precyzją wykonania. Każde koło jest projektowane i wytwarzane w naszej manufakturze.</p>
+    </section>
+
+   
+	
+<!-- Sekcja Kontakt -->
+<section id="contact">
+    <h2>Kontakt</h2> <a href="tel:+48729875478" class="contact-button">Zadzwoń teraz</a>
+</section>
+
+    <!-- Stopka -->
+    <footer>
+        <p>&copy; 2025 ADYKI WHEEL. Wszelkie prawa zastrzeżone.</p>
+    </footer>
+
+    <script>
+        // Funkcja do przełączania menu w wersji mobilnej
+        function toggleMenu() {
+            const menu = document.getElementById("menu");
+            menu.classList.toggle("active");
+        }
+    </script>
+</body>
+</html>
